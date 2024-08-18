@@ -1,0 +1,43 @@
+package com.login;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/loginservlet")
+public class Loginservlet extends HttpServlet {
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		
+		PrintWriter writer = resp.getWriter();
+		resp.setContentType("text/html");
+		
+		
+		req.getRequestDispatcher("link.jsp").include(req, resp);
+		
+		
+		String name = req.getParameter("username");
+		String password = req.getParameter("password");
+		
+		if(password.equals("admin")) {
+			writer.write("<h1>welcome back !! " + name + "</h1>");
+			Cookie ck = new Cookie("name",name);
+			resp.addCookie(ck);
+		}
+		else {
+			writer.write("invalid username or password");
+			req.getRequestDispatcher("Login.jsp").include(req, resp);
+		}
+	}
+
+	
+}
