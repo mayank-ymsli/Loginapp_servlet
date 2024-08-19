@@ -9,6 +9,7 @@
 <body>
 <h1>Register yourself</h1>
 	<form method="post" action ="register">
+		<input type="number" name="empid" placeholder="ENTER YOUR EMPLOYEE ID">
 		<input type="text" name ="username" placeholder="ENTER A USERNAME">
 		<input type="password" name="password" placeholder="ENTER PASSWORD">
 		<input type="text" name="secret" placeholder="enter secret mssg">

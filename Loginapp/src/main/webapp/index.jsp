@@ -7,4 +7,3 @@
 <a href="<%=application.getContextPath()%>/register.jsp">REGISTER</a>
 </body>
 </html>
-q

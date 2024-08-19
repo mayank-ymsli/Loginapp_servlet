@@ -19,23 +19,35 @@ public class Register extends HttpServlet {
 		// TODO Auto-generated method stub
 		PrintWriter out = resp.getWriter();
 		resp.setContentType("text/html");
+		
+		req.getRequestDispatcher("link.jsp").include(req, resp);
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		String mssg = req.getParameter("secret");
+		String empid = req.getParameter("empid");
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url = "jdbc:mysql://localhost:3306/mayank";
-			String username = "root";
+			String user = "root";
 			String pas = "12345";
-			Connection con = DriverManager.getConnection(url,username,pas);
+			Connection con = DriverManager.getConnection(url,user,pas);
 			System.out.println("DB CONNECTED !!");
-			String query="Insert into employee2 (username,password,mssg) values(?,?,?)";
+			String query="Insert into employee2 (username,password,mssg,empid) values(?,?,?,?)";
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setString(1, username);
 			stmt.setString(2, password);
 			stmt.setString(3, mssg);
-			stmt.executeUpdate();
-			
+			stmt.setString(4, empid);
+			int result=stmt.executeUpdate();
+			System.out.println(result);
+			if(result>=1) {
+				out.write("<h1>you are successfully registered</h1>");
+				req.getRequestDispatcher("Login.jsp").include(req, resp);
+			}
+			else {
+				
+				out.write("sorry try again!!");
+			}
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}

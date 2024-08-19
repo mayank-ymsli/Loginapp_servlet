@@ -9,7 +9,7 @@
 <body>
 <h1>Login Page</h1>
 	<form action="loginservlet" method="post">
-	<input type="text" name="username" placeholder="enter your username"/><br>
+	<input type="text" name="empid" placeholder="enter your employee id"/><br>
 	<input type="password" name="password" placeholder="enter your password"><br>
 	<button type="submit">Login</button>
 	</form>
