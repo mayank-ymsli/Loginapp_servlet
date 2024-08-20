@@ -46,7 +46,7 @@ public class Register extends HttpServlet {
 			}
 			else {
 				
-				out.write("sorry try again!!");
+				out.write("sorry try again LATER");
 			}
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
